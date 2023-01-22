@@ -37,9 +37,10 @@ function processFile(input, output, file) {
 	run("Convert to Mask");
 	
 	// remove the scale and record size in pixels, this step might not be necessary 
-	run("Set Scale...", "distance=1 known=1 unit=pixel");
+	//run("Set Scale...", "distance=1 known=1 unit=pixel");
 
 	//get the area pixels of the mask
+	run("Create Selection");
 	run("Measure");
 	updateResults();
 	
