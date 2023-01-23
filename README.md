@@ -1,6 +1,6 @@
 <div align="center">
   
-# Documentation for smFISH analysis in neurons
+# Documentation for Puro-PLA analysis in neurons
 
 </div>
 
