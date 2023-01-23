@@ -1,2 +1,2 @@
-# neuron_mRNA_quantification
-Quantification of mRNA spots in neurons
+# neuron_Puro-PLA_quantification
+Quantification of local translation in neurons
