@@ -80,12 +80,6 @@ function processFile(input, output, file) {
 	saveAs(".tif", output + File.separator + file + "_C3" + ".tif");
 	close();
 	
-	//select and save smFISH-2 channel
-	//selectWindow("C4-" + title);
-	//run("Grays");
-	//resetMinAndMax();
-	//saveAs(".tif", output + File.separator + file + "_C4" + ".tif");
-	//close();
 	
 		
 	//saved all images info
