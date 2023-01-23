@@ -40,7 +40,7 @@ for(f=0; f<files.length; f++) {
 			//split channels 
 			run("Split Channels");
 			
-			// the follwing code exprects a 3 channel image stack with the order of DAPI, smFISH, GFP
+			// the follwing code exprects a 3 channel image stack with the order of DAPI, Puro-PLA, Map2 GFP
 			// adapt the follwing code if the order is different in the images
 			
 			//select and save DAPI channel
@@ -50,7 +50,7 @@ for(f=0; f<files.length; f++) {
 			saveAs(".tif", output + File.separator + fullName + "_DAPI" + ".tif");
 			close();
 			
-			//select and save smFISH channel
+			//select and save Puro-PLA channel
 			selectWindow("C2-" + fullName);
 			run("Grays");
 			resetMinAndMax();
@@ -76,9 +76,7 @@ for(f=0; f<files.length; f++) {
 			run("Grays");
 			saveAs(".tif", output + File.separator + fullName + "_GFP_max" + ".tif");
 			close();
-			
-					
-			
+						
 			
 				
 			//saved all images info
