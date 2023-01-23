@@ -1,5 +1,5 @@
 //===============================================================================
-// Macro to detect all smFISH spots in the image using RS-FISH
+// Macro to detect all Puro-PLA spots in the image using RS-FISH
 // - Laura Breimann - 
 //===============================================================================
 
@@ -14,8 +14,7 @@
 // The detection result table will be saved to the same directory as each image it was calculated for.
 
 // Path the tif files to be processed, searches all sub-directories.
-//dir = "/Users/laurabreimann/Desktop/images_smFISH-2_blur-5/"
-dir = getDirectory("Select a directory containing smFISH images.");
+dir = getDirectory("Select a directory containing Puro-PLA images.");
 
 //////// Define RS parameters: //////////
 
