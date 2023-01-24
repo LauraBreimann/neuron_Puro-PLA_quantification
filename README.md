@@ -17,7 +17,7 @@
 
 <div style="text-align: justify">
   
- ### 1.	Tiff file extraction from imaris files
+ ### 1.	Tiff file extraction from .lif files
   
 Use the [Fiji](https://fiji.sc/) macro ```open_lif_split_gfp_max.ijm``` script to open a set of .lif files, split the channels and resave them as single tiff files. The script also renames the files, for this, the script exprects these channels in this order: 1. DAPI, 2. Puro-PLA, 3. Map2-GFP. The script also saves a max projection of the GFP channel, which may be used to create a binary mask.
   
