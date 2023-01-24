@@ -26,29 +26,33 @@ Use the [Fiji](https://fiji.sc/) macro ```open_lif_split_gfp_max.ijm``` script t
   
 [Ilastik](https://www.ilastik.org/) can be used to create a binary mask to filter the Puro-PLA detections. Since neurons are pretty flat, mask are creeated from max projections of the GFP  channel. The ```Autocontex``` workflow uses pixel classification to segement the cell boundaries. For this cells are segemented in two rounds. After innitial training, similar images can be processed together in the batch mode. To export the masks, select the ```Simple segmentation``` output format and tiff as file format. 
     
-  <img src="https://github.com/LauraBreimann/smFISH_neuron_analysis/blob/main/screenshots/GFP_max.jpg" alt="Max projection of the GFP channel" width="400">
+  <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/C1-Composite_22.jpg" alt="Max projection of the Map2-GFP channel" width="400">
   
-   <img src="https://github.com/LauraBreimann/smFISH_neuron_analysis/blob/main/screenshots/mask_after_ilastik.png" alt="Binary mask after ilastik segmentation" width="400">
+   <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/C3-Composite_22.jpg" alt="Binary mask after ilastik segmentation" width="400">
   
    
   
  ### 3.	Mask refinement and area detection using Fiji
   
-Use the ```creating_mask.ijm``` to create binary masks from the Ilastik segmentation. Using the paintbrush tool, the segmentation can be corrected to remove small background signals or neighbouring cells by coloring them in white (with a value of 0). Small corrections on the masks can be perfromed using black (with a value of 1). Additionally, the separation of soma and neurite can be done with the brush and ```Image Calculator``` tool in Fiji. 
+Use the ```creating_mask.ijm``` to create binary masks from the Ilastik segmentation. Using the paintbrush tool, the segmentation can be corrected to remove small background signals or neighbouring cells by coloring them in black (with a value of 0). Small corrections on the masks can be perfromed using white (with a value of 1).  
   
-  <img src="https://github.com/LauraBreimann/smFISH_neuron_analysis/blob/main/screenshots/mask_total_neuron.png" alt="Binary mask of the full neuron" width="250">
-  
-  <img src="https://github.com/LauraBreimann/smFISH_neuron_analysis/blob/main/screenshots/mask_soma.png" alt="Binary mask of the soma" width="250">
-  
-  <img src="https://github.com/LauraBreimann/smFISH_neuron_analysis/blob/main/screenshots/mask_neurite.png" alt="Binary mask of the neurite" width="250">
+  <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/Act_Puro647_Map2_488_scr_ctrl_scr22.jpg" alt="Binary mask of 70 µm of the main neurites" width="400">
   
 
   
  ### 4.	Puro-PLA analysis using RS-FISH
   
- One optional step is to prepare the Puro-PLA images using a difference of Gaussian filer using the macro script ```DoG_filter.ijm```. The sigma for the Gaussian blur needs to be adapted for each new set of images. 
+One optional step is to prepare the Puro-PLA images using a difference of Gaussian filer using the macro script ```DoG_filter.ijm```. The sigma for the Gaussian blur needs to be adapted for each new set of images. 
   
- To detect Puro-PLA spots in the image, the Fiji plugin [RS-FISH](https://github.com/PreibischLab/RS-FISH) can be used (info on how to use RS-FISH and how to download the plugin can be found on the [RS-FISH](https://github.com/PreibischLab/RS-FISH) GitHub page). The macro ```RS-FISH_macro.ijm``` can be used to run RS-FISH in batch mode. Determine the parameters before using one representative image and then run the rest of the images in batch mode. 
+To detect Puro-PLA spots in the image, the Fiji plugin [RS-FISH](https://github.com/PreibischLab/RS-FISH) can be used (info on how to use RS-FISH and how to download the plugin can be found on the [RS-FISH](https://github.com/PreibischLab/RS-FISH) GitHub page). The macro ```RS-FISH_macro.ijm``` can be used to run RS-FISH in batch mode. Determine the parameters before using one representative image and then run the rest of the images in batch mode. 
+ 
+ 
+  <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/Puro-PLA.png" alt="Image of Puro-PLA signal" width="450"> 
+ 
+ <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/RS-FISH_detection.png" alt="Image of RS-FISH detection of the Puro-PLA signal" width="450"> 
+ 
+ <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/Puro-PLA_detected.png" alt="Image of Puro-PLA signal detected by RS-FISH" width="450"> 
+ 
   
   
  ### 5.	Mask filtering using RS-FISH
