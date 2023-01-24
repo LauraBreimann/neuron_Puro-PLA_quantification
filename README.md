@@ -28,7 +28,7 @@ Use the [Fiji](https://fiji.sc/) macro ```open_lif_split_gfp_max.ijm``` script t
     
   <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/C1-Composite_22.jpg" alt="Max projection of the Map2-GFP channel" width="400">
   
-   <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/C3-Composite_22.jpg" alt="Binary mask after ilastik segmentation" width="400">
+   <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/Act_Puro647_Map2_488_scr_ctrl_scr22_GFP_max_ilastik_raw_mask.jpg" alt="Binary mask after ilastik segmentation" width="400">
   
    
   
