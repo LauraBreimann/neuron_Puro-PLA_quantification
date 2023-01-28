@@ -40,6 +40,8 @@ function processFile(input, output, file) {
 	selectWindow("blur");
 	close("blur");
 	selectWindow(file);
+	//optional smoothing command if camera noise is visible in the images
+	//run("Smooth");
 	close(file);
 	// save new image to folder and close the windows
 	print("Saving to: " + output);
