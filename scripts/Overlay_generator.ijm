@@ -5,26 +5,23 @@
 #@ String (label = "File suffix", value = ".csv") suffix
 
 open(image);
-processFolder(input);
+titleOfCurrentImage = getTitle();
 
-// function to scan folders/subfolders/files to find files with correct suffix
-function processFolder(input) {
-	list = getFileList(input);
-	list = Array.sort(list);
-	for (i = 0; i < list.length; i++) {
-		if(File.isDirectory(input + File.separator + list[i]))
-			processFolder(input + File.separator + list[i]);
-		if(endsWith(list[i], suffix))
-			processFile(input, output, list[i]);
-	}
-}
+//processFolder(input);
+processFile(input);
 
-function processFile(input, output, file) {
 
-	Table.open(input + File.separator + file);
+function processFile(input) {
+
+	Table.open(input);
 	xpoints = Table.getColumn("x"); 
 	ypoints = Table.getColumn("y");
 	makeSelection("point small red circle", xpoints, ypoints);
+	
+shortTitle = replace(titleOfCurrentImage, ".tif" , "_")
+		
+run("ROI Manager...");
+roiManager("Add");	
 
-saveAs(output + File.separator + file + ".tif");		
+saveAs(output + File.separator  + shortTitle +  "overlay.tif");		
 			
