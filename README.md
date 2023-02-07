@@ -11,7 +11,8 @@
 * _**3.	Mask refinement and area detection using Fiji**_
 * _**4.	Puro-PLA analysis using RS-FISH**_
 * _**5.	Mask filtering using RS-FISH**_
-* _**6.	Colletion of all datasets and plotting**_
+* _**6.	Generating overlay images of the detections**_
+* _**7.	Colletion of all datasets and plotting**_
 
 <br />
 
@@ -62,9 +63,23 @@ To detect Puro-PLA spots in the image, the Fiji plugin [RS-FISH](https://github.
  
   <img src="https://github.com/LauraBreimann/smFISH_neuron_analysis/blob/main/screenshots/mask_filtering_plugin.png" alt="Screenshot of the mask filtering plugin" width="700">
   
+
+
   
+ ### 6.	Generating overlay images of the detections
   
- ### 6.	Colletion of all datasets and plotting
+ To show the RS-FISH detections on the images one can use the visualization tools within [RS-FISH](https://github.com/PreibischLab/RS-FISH) using Fiji or the BigDataViewer. For 2D images the macro ```Overlay_generator.ijm``` can be used to show detections easily. It will also add the detections to the ROI manager so they can be further manipulated in shape, size and color. 
+  
+ 
+  <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/no_detections.png" alt="Screenshot of the composite image showing no detections" width="450">
+  
+ <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/full_overlay.png" alt="Screenshot of the composite image showing RS-FISH detections filtered by the neurite mask" width="450">
+    
+ <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/just_detections.png" alt="Screenshot of just the detections filtered by the neurite mask" width="450">
+  
+
+  
+ ### 7.	Colletion of all datasets and plotting
   
 To detect the size of the created masks run the ```record_size_of_mask.ijm``` to create csv files for each binary mask containing an area measurement. Make sure that files are binary files with values of 0 and 1 and that all have set the same scale. 
   
