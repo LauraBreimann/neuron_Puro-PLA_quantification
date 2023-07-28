@@ -12,20 +12,23 @@
 * _**4.	Puro-PLA analysis using RS-FISH**_
 * _**5.	Mask filtering using RS-FISH**_
 * _**6.	Generating overlay images of the detections**_
-* _**7.	Colletion of all datasets and plotting**_
+* _**7.	Collection of all datasets and plotting**_
 
 <br />
 
+
+This pipeline is part of a publication: 
+_Loedige, I. et al. mRNA stability and m6A are major determinants of subcellular mRNA localization in neurons. Mol. Cell (2023) [doi:10.1016/j.molcel.2023.06.021](https://www.sciencedirect.com/science/article/pii/S1097276523004689?via%3Dihub)._
 <div style="text-align: justify">
   
  ### 1.	Tiff file extraction from .lif files
   
-Use the [Fiji](https://fiji.sc/) macro ```open_lif_split_gfp_max.ijm``` script to open a set of .lif files, split the channels and resave them as single tiff files. The script also renames the files, for this, the script exprects these channels in this order: 1. DAPI, 2. Puro-PLA, 3. Map2-GFP. The script also saves a max projection of the GFP channel, which may be used to create a binary mask.
+Use the [Fiji](https://fiji.sc/) macro ```open_lif_split_gfp_max.ijm``` script to open a set of .lif files, split the channels, and resave them as single tiff files. The script also renames the files, for this, the script expects these channels in this order: 1. DAPI, 2. Puro-PLA, 3. Map2-GFP. The script also saves a max projection of the GFP channel, which may be used to create a binary mask.
   
   
  ### 2.	Mask creation using Ilastik
   
-[Ilastik](https://www.ilastik.org/) can be used to create a binary mask to filter the Puro-PLA detections. Since neurons are pretty flat, mask are creeated from max projections of the GFP  channel. The ```Autocontex``` workflow uses pixel classification to segement the cell boundaries. For this cells are segemented in two rounds. After innitial training, similar images can be processed together in the batch mode. To export the masks, select the ```Simple segmentation``` output format and tiff as file format. 
+[Ilastik](https://www.ilastik.org/) can be used to create a binary mask to filter the Puro-PLA detections. Since neurons are pretty flat, masks are created from max projections of the GFP  channel. The ```Autocontex``` workflow uses pixel classification to segment the cell boundaries. For this, cells are segmented into two rounds. After initial training, similar images can be processed together in batch mode. To export the masks, select the ```Simple segmentation``` output format and tiff as the file format. 
     
   <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/C1-Composite_22.jpg" alt="Max projection of the Map2-GFP channel" width="400">
   
@@ -35,7 +38,7 @@ Use the [Fiji](https://fiji.sc/) macro ```open_lif_split_gfp_max.ijm``` script t
   
  ### 3.	Mask refinement and area detection using Fiji
   
-Use the ```creating_mask.ijm``` to create binary masks from the Ilastik segmentation. Using the paintbrush tool, the segmentation can be corrected to remove small background signals or neighbouring cells by coloring them in black (with a value of 0). Small corrections on the masks can be perfromed using white (with a value of 1).  
+Use the ```creating_mask.ijm``` to create binary masks from the Ilastik segmentation. Using the paintbrush tool, the segmentation can be corrected to remove small background signals or neighboring cells by coloring them in black (with a value of 0). Small corrections on the masks can be performed using white (with a value of 1).  
   
   <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/Act_Puro647_Map2_488_scr_ctrl_scr22.jpg" alt="Binary mask of 70 µm of the main neurites" width="400">
   
@@ -43,7 +46,7 @@ Use the ```creating_mask.ijm``` to create binary masks from the Ilastik segmenta
   
  ### 4.	Puro-PLA analysis using RS-FISH
   
-One optional step is to prepare the Puro-PLA images using a difference of Gaussian filer using the macro script ```DoG_filter.ijm```. The sigma for the Gaussian blur needs to be adapted for each new set of images. 
+One optional step is to prepare the Puro-PLA images using a difference of Gaussian filter using the macro script ```DoG_filter.ijm```. The sigma for the Gaussian blur needs to be adapted for each new set of images. 
   
 To detect Puro-PLA spots in the image, the Fiji plugin [RS-FISH](https://github.com/PreibischLab/RS-FISH) can be used (info on how to use RS-FISH and how to download the plugin can be found on the [RS-FISH](https://github.com/PreibischLab/RS-FISH) GitHub page). The macro ```RS-FISH_macro.ijm``` can be used to run RS-FISH in batch mode. Determine the parameters before using one representative image and then run the rest of the images in batch mode. 
  
@@ -68,7 +71,7 @@ To detect Puro-PLA spots in the image, the Fiji plugin [RS-FISH](https://github.
   
  ### 6.	Generating overlay images of the detections
   
- To show the RS-FISH detections on the images one can use the visualization tools within [RS-FISH](https://github.com/PreibischLab/RS-FISH) using Fiji or the BigDataViewer. For 2D images the macro ```Overlay_generator.ijm``` can be used to show detections easily. It will also add the detections to the ROI manager so they can be further manipulated in shape, size and color. 
+ To show the RS-FISH detections on the images, one can use the visualization tools within [RS-FISH](https://github.com/PreibischLab/RS-FISH) using Fiji or the BigDataViewer. For 2D images, the macro ```Overlay_generator.ijm``` can be used to show detections easily. It will also add the detections to the ROI manager so they can be further manipulated in shape, size, and color. 
   
  
   <img src="https://github.com/LauraBreimann/neuron_Puro-PLA_quantification/blob/main/screenshots/no_detections.png" alt="Screenshot of the composite image showing no detections" width="450">
@@ -79,11 +82,11 @@ To detect Puro-PLA spots in the image, the Fiji plugin [RS-FISH](https://github.
   
 
   
- ### 7.	Colletion of all datasets and plotting
+ ### 7.	Collection of all datasets and plotting
   
-To detect the size of the created masks run the ```record_size_of_mask.ijm``` to create csv files for each binary mask containing an area measurement. Make sure that files are binary files with values of 0 and 1 and that all have set the same scale. 
+To detect the size of the created masks, run the ```record_size_of_mask.ijm``` to create CSV files for each binary mask containing an area measurement. Make sure that files are binary files with values of 0 and 1 and that all have set the same scale. 
   
-  To create a dataset for plotting, this python script searches all the files and combines them, but this might be dependen on the file structure. 
+  To create a dataset for plotting, this Python script searches all the files and combines them, but this might depend on the file structure. 
   
   ```Collect_counts_and_mask_sizes.ipynb```
   
